@@ -1,6 +1,7 @@
 package com.example.flyingfish.mytest.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.flyingfish.mytest.R;
+import com.example.flyingfish.mytest.activity.OKHttpActivity;
 import com.example.flyingfish.mytest.adapter.CommonFrameFragmentAdapter;
 import com.example.flyingfish.mytest.base.BaseFragment;
 
@@ -40,6 +42,10 @@ public class CommonFrameFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String data = datas[i];
+                if(data.toLowerCase().equals("okhttp")){  //toLowerCase()转化为小写
+                    Intent intent = new Intent(mContext,OKHttpActivity.class);
+                    startActivity(intent);
+                }
                 Toast.makeText(mContext,"data == "+data,Toast.LENGTH_SHORT).show();
             }
         });

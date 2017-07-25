@@ -10,12 +10,30 @@
         android:id="@+id/bt_get_post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="GET和POST请求"/>
+        android:text="使用OKhttp的GET和POST请求"/>
+
+    <Button
+        android:id="@+id/bt_get_httputils"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用OKhttp-Utils的GET和POST请求"/>
+
+    <Button
+        android:id="@+id/bt_httputils_downloadfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用OKhttp-Utils下载大文件"/>
 
     <TextView
         android:id="@+id/tv_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="显示请求的数据"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

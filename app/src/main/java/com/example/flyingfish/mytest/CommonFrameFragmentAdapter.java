@@ -1,4 +1,4 @@
-package com.example.flyingfish.mytest.adapter;
+package com.example.flyingfish.mytest;
 
 import android.content.Context;
 import android.graphics.Color;

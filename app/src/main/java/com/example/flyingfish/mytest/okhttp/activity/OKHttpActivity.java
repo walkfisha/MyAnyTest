@@ -1,6 +1,8 @@
-package com.example.flyingfish.mytest.activity;
+package com.example.flyingfish.mytest.okhttp.activity;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -9,12 +11,14 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.flyingfish.mytest.R;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.BitmapCallback;
 import com.zhy.http.okhttp.callback.FileCallBack;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -57,6 +61,12 @@ public class OKHttpActivity extends Activity {
     Button btHttputilsDownloadfile;
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
+    @BindView(R.id.bt_httputils_image)
+    Button btHttputilsImage;
+    @BindView(R.id.imageView)
+    ImageView imageView;
+    @BindView(R.id.bt_httputils_image_list)
+    Button btHttputilsImageList;
 
     private OkHttpClient client = new OkHttpClient();
     private Handler handler = new Handler() {
@@ -89,7 +99,7 @@ public class OKHttpActivity extends Activity {
     /**
      * 使用原生的OKhttp请求网络数据：get和post
      */
-    @OnClick({R.id.bt_get_post, R.id.bt_get_httputils,R.id.bt_httputils_downloadfile})
+    @OnClick({R.id.bt_get_post, R.id.bt_get_httputils, R.id.bt_httputils_downloadfile, R.id.bt_httputils_image,R.id.bt_httputils_image_list})
     public void setBtGetPost(View view) {
         switch (view.getId()) {
             case R.id.bt_get_post:
@@ -106,6 +116,13 @@ public class OKHttpActivity extends Activity {
                 break;
             case R.id.bt_httputils_downloadfile:
                 downloadFile();
+                break;
+            case R.id.bt_httputils_image:
+                getImage();
+                break;
+            case R.id.bt_httputils_image_list:
+                Intent intent = new Intent(OKHttpActivity.this,OKHttpListActivity.class);
+                startActivity(intent);
                 break;
         }
 
@@ -223,7 +240,7 @@ public class OKHttpActivity extends Activity {
      * 使用OKHttp-Utils的post方法请求网络文本数据
      */
     public void getDataFromOKHttpUtilsPost() {
-        String url = "http://news.mtime.com/2017/07/25/1571748.html";
+        String url = "http://api.m.mtime.cn/PageSubArea/TrailerList.api";
         OkHttpUtils
                 .post()
                 .url(url)
@@ -254,12 +271,12 @@ public class OKHttpActivity extends Activity {
      * 使用OKhttp-Utils下载大文件
      */
     public void downloadFile() {
-        String url = "http://pan.baidu.com/play/video#video/mp4";
+        String url = "http://vfx.mtime.cn/Video/2017/07/23/mp4/170723125607378868.mp4";
         OkHttpUtils//
                 .get()//
                 .url(url)//
                 .build()//
-                .execute(new FileCallBack(Environment.getExternalStorageDirectory().getAbsolutePath(), "okhttp-utils-test.mp4")//
+                .execute(new FileCallBack(Environment.getExternalStorageDirectory().getAbsolutePath(), "okhttp-utils-test.MP4")//
                 {
 
                     @Override
@@ -280,6 +297,34 @@ public class OKHttpActivity extends Activity {
                     @Override
                     public void onResponse(File file, int id) {
                         Log.e(TAG, "onResponse :" + file.getAbsolutePath());
+                    }
+                });
+    }
+
+    /**
+     *
+     */
+    public void getImage() {
+        tvResult.setText("");
+        String url = "http://images.csdn.net/20150817/1.jpg";
+        OkHttpUtils
+                .get()//
+                .url(url)//
+                .tag(this)//
+                .build()//
+                .connTimeOut(20000)
+                .readTimeOut(20000)
+                .writeTimeOut(20000)
+                .execute(new BitmapCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        tvResult.setText("onError:" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onResponse(Bitmap bitmap, int id) {
+                        Log.e("TAG", "onResponse：complete");
+                        imageView.setImageBitmap(bitmap);
                     }
                 });
     }

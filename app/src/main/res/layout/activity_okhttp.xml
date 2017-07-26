@@ -24,6 +24,18 @@
         android:layout_height="wrap_content"
         android:text="使用OKhttp-Utils下载大文件"/>
 
+    <Button
+        android:id="@+id/bt_httputils_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用OKhttp-Utils请求单张图片"/>
+
+    <Button
+        android:id="@+id/bt_httputils_image_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用OKhttp-Utils在列表中请求图片"/>
+
     <TextView
         android:id="@+id/tv_result"
         android:layout_width="match_parent"
@@ -34,6 +46,11 @@
         android:id="@+id/progressBar"
         style="?android:progressBarStyleHorizontal"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 </LinearLayout>

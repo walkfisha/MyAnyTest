@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"/>  <!-- 解决横竖屏切换时，Fragment里的内容（展示数据）重叠的问题 -->
-        <activity android:name=".activity.OKHttpActivity"/>
+        <activity android:name=".okhttp.activity.OKHttpActivity"/>
+        <activity android:name=".okhttp.activity.OKHttpListActivity"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>

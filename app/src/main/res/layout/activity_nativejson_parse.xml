@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include layout="@layout/titlebar"/>
+
     <Button
         android:id="@+id/btn_native2javaobj"
         android:layout_width="match_parent"
@@ -31,5 +33,35 @@
         android:layout_height="wrap_content"
         android:text="特殊json数据解析"
         android:padding="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="原始数据"
+        android:textSize="18sp"
+        android:layout_margin="5dp"
+        android:textColor="@android:color/holo_blue_bright"/>
+
+    <TextView
+        android:id="@+id/tv_native_original"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="转换后的数据"
+        android:textSize="18sp"
+        android:layout_margin="5dp"
+        android:textColor="@android:color/holo_blue_bright"/>
+
+    <TextView
+        android:id="@+id/tv_native_last"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        />
 
 </LinearLayout>

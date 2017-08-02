@@ -3,6 +3,7 @@ package com.example.flyingfish.mytest;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.Button;
 
 import butterknife.BindView;
@@ -37,7 +38,16 @@ public class NativeJsonParseActivity extends Activity {
 
 
     @OnClick({R.id.btn_native2javaobj,R.id.btn_native2javalist,R.id.btn_native_complex,R.id.btn_native_special})
-    public void onClick(){
-        
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.btn_native2javaobj:
+                break;
+            case R.id.btn_native2javalist:
+                break;
+            case R.id.btn_native_complex:
+                break;
+            case R.id.btn_native_special:
+                break;
+        }
     }
 }

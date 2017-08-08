@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.flyingfish.mytest.R;
-import com.example.flyingfish.mytest.NativeJsonParseActivity;
+import com.example.flyingfish.mytest.json.activity.NativeJsonParseActivity;
 import com.example.flyingfish.mytest.okhttp.activity.OKHttpActivity;
 import com.example.flyingfish.mytest.CommonFrameFragmentAdapter;
 import com.example.flyingfish.mytest.base.BaseFragment;

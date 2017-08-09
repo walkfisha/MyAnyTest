@@ -7,32 +7,32 @@
     <include layout="@layout/titlebar" />
 
     <Button
-        android:id="@+id/btn_native2javaobj"
+        android:id="@+id/btn_json2javaobj"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:text="将json对象转化为Java对象" />
 
     <Button
-        android:id="@+id/btn_native2javalist"
+        android:id="@+id/btn_json2javalist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:text="将json数组转化为Java集合" />
 
     <Button
-        android:id="@+id/btn_native_complex"
+        android:id="@+id/btn_gson_java2jsonobject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="复杂json数据解析" />
+        android:text="将Java对象转化为json对象" />
 
     <Button
-        android:id="@+id/btn_native_special"
+        android:id="@+id/btn_gson_javatojsonarray"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="特殊json数据解析" />
+        android:text="将Java集合转化为json数组" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tv_native_original"
+                android:id="@+id/tv_gson_original"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
@@ -66,7 +66,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tv_native_last"
+                android:id="@+id/tv_gson_last"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />

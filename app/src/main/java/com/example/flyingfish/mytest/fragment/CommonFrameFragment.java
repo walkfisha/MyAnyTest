@@ -10,6 +10,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.flyingfish.mytest.R;
+import com.example.flyingfish.mytest.json.activity.FastJsonActivity;
+import com.example.flyingfish.mytest.json.activity.GsonActivity;
 import com.example.flyingfish.mytest.json.activity.NativeJsonParseActivity;
 import com.example.flyingfish.mytest.okhttp.activity.OKHttpActivity;
 import com.example.flyingfish.mytest.CommonFrameFragmentAdapter;
@@ -37,10 +39,20 @@ public class CommonFrameFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String data = datas[i];
                 if(data.toLowerCase().equals("okhttp")){  //toLowerCase()转化为小写
+                    //点击条目跳转到okhttp界面
                     Intent intent = new Intent(mContext,OKHttpActivity.class);
                     startActivity(intent);
                 }else if (data.toLowerCase().equals("nativejsonparse")){
+                    //点击条目跳转到json解析页面
                     Intent intent = new Intent(mContext,NativeJsonParseActivity.class);
+                    startActivity(intent);
+                }else if (data.toLowerCase().equals("gson")){
+                    //点击条目跳转到Gson解析界面
+                    Intent intent = new Intent(mContext, GsonActivity.class);
+                    startActivity(intent);
+                }else if (data.toLowerCase().equals("fastjson")){
+                    //点击条目跳转到FastJson解析页面
+                    Intent intent = new Intent(mContext, FastJsonActivity.class);
                     startActivity(intent);
                 }
                 Toast.makeText(mContext,"data == "+data,Toast.LENGTH_SHORT).show();

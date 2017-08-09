@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.flyingfish.mytest.R;
+import com.example.flyingfish.mytest.json.bean.DataInfo;
+import com.example.flyingfish.mytest.json.bean.FilmInfo;
 import com.example.flyingfish.mytest.json.bean.TicketInfo;
 
 import org.json.JSONArray;
@@ -68,12 +70,152 @@ public class NativeJsonParseActivity extends Activity {
                 break;
             //复杂json数据解析
             case R.id.btn_native_complex:
+                jsonToJavaOfComplex();
                 break;
             //特殊json数据解析
             case R.id.btn_native_special:
+                jsonToJavaOfSpecial();
                 break;
         }
     }
+
+    //特殊json数据解析
+    private void jsonToJavaOfSpecial() {
+        //获取或创建json数据
+        String json = "{\n" +
+                "    \"code\": 0,\n" +
+                "    \"list\": {\n" +
+                "        \"0\": {\n" +
+                "            \"aid\": \"6008965\",\n" +
+                "            \"author\": \"哔哩哔哩番剧\",\n" +
+                "            \"coins\": 170,\n" +
+                "            \"copyright\": \"Copy\",\n" +
+                "            \"create\": \"2016-08-25 21:34\"\n" +
+                "        },\n" +
+                "        \"1\": {\n" +
+                "            \"aid\": \"6008938\",\n" +
+                "            \"author\": \"哔哩哔哩番剧\",\n" +
+                "            \"coins\": 345,\n" +
+                "            \"copyright\": \"Copy\",\n" +
+                "            \"create\": \"2016-08-25 21:28\"\n" +
+                "        }\n" +
+                "    }\n" +
+                "}";
+        //创建封装的Java对象
+        FilmInfo filmInfo = new FilmInfo();
+        //解析json数据
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            //第一层解析
+            int code = jsonObject.optInt("code");
+            JSONObject list = jsonObject.optJSONObject("list");
+            //第一层封装
+            filmInfo.setCode(code);
+            List<FilmInfo.FilmBean> lists = new ArrayList<>();
+            filmInfo.setList(lists);
+            //第二层解析
+            for (int i = 0;i < list.length(); i++){
+                JSONObject object = list.optJSONObject(i + "");
+                if (object != null){
+                    String aid = object.optString("aid");
+                    String author = object.optString("author");
+                    int coins = object.optInt("coins");
+                    String copyright = object.optString("copyright");
+                    String create = object.optString("create");
+
+                    //第二层封装
+                    FilmInfo.FilmBean filmBean = new FilmInfo.FilmBean();
+                    filmBean.setAid(aid);
+                    filmBean.setAuthor(author);
+                    filmBean.setCoins(coins);
+                    filmBean.setCopyright(copyright);
+                    filmBean.setCreate(create);
+                    lists.add(filmBean);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //显示json数据
+        tvNativeOriginal.setText(json);
+        tvNativeLast.setText(filmInfo.toString());
+    }
+
+    //复杂json数据解析
+    private void jsonToJavaOfComplex() {
+        //获取或创建json数据
+        String json = "{\n" +
+                "    \"data\": {\n" +
+                "        \"count\": 5,\n" +
+                "        \"items\": [\n" +
+                "            {\n" +
+                "                \"id\": 45,\n" +
+                "                \"title\": \"坚果\"\n" +
+                "            },\n" +
+                "            {\n" +
+                "                \"id\": 132,\n" +
+                "                \"title\": \"炒货\"\n" +
+                "            },\n" +
+                "            {\n" +
+                "                \"id\": 166,\n" +
+                "                \"title\": \"蜜饯\"\n" +
+                "            },\n" +
+                "            {\n" +
+                "                \"id\": 185,\n" +
+                "                \"title\": \"果脯\"\n" +
+                "            },\n" +
+                "            {\n" +
+                "                \"id\": 196,\n" +
+                "                \"title\": \"礼盒\"\n" +
+                "            }\n" +
+                "        ]\n" +
+                "    },\n" +
+                "    \"rs_code\": 1000,\n" +
+                "    \"rs_msg\": \"success\"\n" +
+                "}";
+        DataInfo dataInfo = new DataInfo();
+        //解析json数据
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            //第一层解析
+            JSONObject data = jsonObject.optJSONObject("data");
+            int rs_code = jsonObject.optInt("rs_code");
+            String rs_msg = jsonObject.optString("rs_msg");
+            //第一层封装
+            DataInfo.DataBean dataBean = new DataInfo.DataBean();
+            dataInfo.setData(dataBean);
+            dataInfo.setRs_code(rs_code);
+            dataInfo.setRs_msg(rs_msg);
+
+            //第二层解析
+            int id = data.optInt("count");
+            JSONArray items = data.optJSONArray("items");
+            //第二层数据的封装
+            dataBean.setCount(id);
+            List<DataInfo.DataBean.ItemsBean> itemsBean = new ArrayList<>();
+            dataBean.setItems(itemsBean);
+            //第三层解析
+            for (int i = 0;i < items.length();i++){
+                JSONObject object = items.optJSONObject(i);
+                if (object != null){
+                    int id1 = object.optInt("id");
+                    String title = object.optString("title");
+                    //第三层数据的封装
+                    DataInfo.DataBean.ItemsBean bean = new DataInfo.DataBean.ItemsBean();
+                    bean.setId(id1);
+                    bean.setTitle(title);
+                    itemsBean.add(bean);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        //显示json数据
+        tvNativeOriginal.setText(json);
+        tvNativeLast.setText(dataInfo.toString());
+    }
+
     //将json格式的字符串[]转换为Java对象的List
     private void jsonToJavaListByNative() {
         //获取或创建json数据

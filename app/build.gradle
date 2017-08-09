@@ -32,6 +32,7 @@ dependencies {
     compile 'com.zhy:okhttputils:2.6.2'
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.alibaba:fastjson:1.2.36'
+    compile 'org.xutils:xutils:3.5.0'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
 }

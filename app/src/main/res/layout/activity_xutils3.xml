@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/titlebar" />
+
+    <Button
+        android:id="@+id/btn_json2javaobj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="xUtils3注解模块" />
+
+    <Button
+        android:id="@+id/btn_json2javalist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="xUtils3联网模块" />
+
+    <Button
+        android:id="@+id/btn_gson_java2jsonobject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="xUtils3加载单张图片" />
+
+    <Button
+        android:id="@+id/btn_gson_javatojsonarray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="xUtils3加载列表图片" />
+
+</LinearLayout>
+

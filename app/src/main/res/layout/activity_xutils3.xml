@@ -7,32 +7,42 @@
     <include layout="@layout/titlebar" />
 
     <Button
-        android:id="@+id/btn_json2javaobj"
+        android:textAllCaps="false"
+        android:id="@+id/btn_xutils_annotation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:text="xUtils3注解模块" />
 
     <Button
-        android:id="@+id/btn_json2javalist"
+        android:textAllCaps="false"
+        android:id="@+id/btn_xutils_net"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:text="xUtils3联网模块" />
 
     <Button
-        android:id="@+id/btn_gson_java2jsonobject"
+        android:textAllCaps="false"
+        android:id="@+id/btn_xutils_load_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:text="xUtils3加载单张图片" />
 
     <Button
-        android:id="@+id/btn_gson_javatojsonarray"
+        android:textAllCaps="false"
+        android:id="@+id/btn_xutils_load_imagelist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:text="xUtils3加载列表图片" />
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"/>
 
 </LinearLayout>
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <include layout="@layout/titlebar"/>
+
+    <Button
+        android:id="@+id/btn_request"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get和Post请求"/>
+
+    <Button
+        android:id="@+id/btn_bigfile_upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="大文件上传"/>
+
+    <Button
+        android:id="@+id/btn_file_download"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="文件下载"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_result"
+            android:text="显示结果"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:progressBarStyleHorizontal"
+        />
+
+</LinearLayout>

@@ -16,6 +16,7 @@ import com.example.flyingfish.mytest.json.activity.NativeJsonParseActivity;
 import com.example.flyingfish.mytest.okhttp.activity.OKHttpActivity;
 import com.example.flyingfish.mytest.CommonFrameFragmentAdapter;
 import com.example.flyingfish.mytest.base.BaseFragment;
+import com.example.flyingfish.mytest.xutils3.activity.XUtils3Activity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,6 +54,10 @@ public class CommonFrameFragment extends BaseFragment {
                 }else if (data.toLowerCase().equals("fastjson")){
                     //点击条目跳转到FastJson解析页面
                     Intent intent = new Intent(mContext, FastJsonActivity.class);
+                    startActivity(intent);
+                }else if (data.toLowerCase().equals("xutils3")){
+                    //点击条目跳转到XUtils3界面
+                    Intent intent = new Intent(mContext, XUtils3Activity.class);
                     startActivity(intent);
                 }
                 Toast.makeText(mContext,"data == "+data,Toast.LENGTH_SHORT).show();
